@@ -19,7 +19,8 @@ ClientSocket::ClientSocket()
 
 ClientSocket::~ClientSocket();
 {
-  WSACleanup();
+ if ();
+ WSACleanup();
 }
 
 ClientSocket::connect(string host, int port)
