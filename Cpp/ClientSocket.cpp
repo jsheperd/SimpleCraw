@@ -1,6 +1,7 @@
 #include "ClientSocket.h"
 
 bool ClientSocket::WSA_LOADED = false;
+unsigned int ClientSocket::instances = 0;
 
 class ClientSocket
 
@@ -13,13 +14,21 @@ ClientSocket::ClientSocket()
     if (WSAStartup(MAKEWORD(2,0), &info)) {
       throw "Could not start WSA";
 	    WSA_LOADED = true;
+	    
+	    
     }
+    
+    instances = instance + 1;
   }
 }
 
 ClientSocket::~ClientSocket();
 {
-  WSACleanup();
+  instances = instances - 1;
+  if ((instances == 0) && (WSA_LOADED == true) {
+    WSACleanup();
+    WSA_LOADED = false;
+  }
 }
 
 ClientSocket::connect(string host, int port)
@@ -42,3 +51,4 @@ int	ClientSocket::receive(byte * buffer, int read_len)
 int ClientSocket::send(const byte * buffer,  int write_len)
 { return 1;
 }
+
