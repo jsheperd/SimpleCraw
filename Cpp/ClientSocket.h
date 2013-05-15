@@ -10,6 +10,8 @@ class ClientSocket
 {
 private:
 	static bool WSA_LOADED;
+	static unsigned int ClientSocket::instances = 0;
+
   SOCKET s_;
 
 public: 
