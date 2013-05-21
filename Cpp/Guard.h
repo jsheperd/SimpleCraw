@@ -3,6 +3,7 @@
 
 #include <windows.h>
 #include <Synchapi.h>
+#include "mutex.h"
 
 // Usage:
 //  CMutex m_InstanceMutex;
@@ -16,17 +17,6 @@
 //   	if (instances == 10){
 //   	throw 1;
 //  }
-
-class CMutex {
-	private:
-		CRITICAL_SECTION m_tCriticalSection;
-	public:
-		CMutex();
-		~CMutex();
-
-		void Lock();
-		void Unlock();    
-};
 
 class CGuard {
 	private:
