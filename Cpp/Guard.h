@@ -2,7 +2,6 @@
 #define GUARD_H
 
 #include <windows.h>
-#include <Synchapi.h>
 #include "mutex.h"
 
 // Usage:

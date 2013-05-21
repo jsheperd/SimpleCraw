@@ -2,7 +2,6 @@
 #define MUTEX_H
 
 #include <windows.h>
-#include <Synchapi.h>
 
 class CMutex {
 	private:
