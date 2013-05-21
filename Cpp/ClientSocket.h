@@ -3,14 +3,12 @@
 
 #include <WinSock2.h>
 #include <string>
-typedef char byte;
-typedef std::string string;
 
 class ClientSocket
 {
 private:
 	static bool WSA_LOADED;
-	static unsigned int ClientSocket::instances = 0;
+	static unsigned int instances;
 
   SOCKET s_;
 
@@ -18,12 +16,12 @@ public:
 	ClientSocket();
 	~ClientSocket();
 
-	connect(const string& host, int port);
+	void connect(const std::string& host, int port);
 	void close();
 
-	int receive(byte * buffer, int read_len); 
-  int send(const byte * buffer,  int write_len);
-}
+	std::string receive(); 
+  int sendbuffer(const std::string & buffer);
+};
 
 #endif /* CLIENTSOCKET_H */
 
